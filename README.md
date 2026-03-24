@@ -30,25 +30,25 @@ En fullstack-applikation för att hantera spelturneringar med matcher. Byggd med
 
 ## Endpoints
 
-### Tournaments – api/Tournaments
+### Tournaments – `api/Tournaments`
 
-*Metod:		*URL:					*Beskrivning:
+| Metod | URL                     | Beskrivning                              |
+|------|--------------------------|------------------------------------------|
+| GET  | `/api/Tournaments`       | Hämta alla turneringar (stöd för sökning) |
+| GET  | `/api/Tournaments/{id}`  | Hämta en specifik turnering              |
+| POST | `/api/Tournaments`       | Skapa ny turnering                       |
+| PUT  | `/api/Tournaments/{id}`  | Uppdatera turnering                      |
+| DELETE | `/api/Tournaments/{id}`| Ta bort turnering                        |
 
-GET			/api/Tournaments		Hämta alla turneringar (+ sökning)
-GET			/api/Tournaments/{id}	Hämta en turnering
-POST		/api/Tournaments		Skapa ny turnering
-PUT			/api/Tournaments/{id}	Uppdatera turnering
-DELETE		/api/Tournaments/{id}	Ta bort turnering
+### Games – `api/Games`
 
-### Games – api/Games
-
-*Metod:		*URL:				*Beskrivning:
-
-GET			/api/Games			Hämta alla matcher
-GET			/api/Games/{id}		Hämta en match
-POST		/api/Games			Skapa ny match
-PUT			/api/Games/{id}		Uppdatera match
-DELETE		/api/Games/{id}		Ta bort match
+| Metod | URL                 | Beskrivning              |
+|------|----------------------|--------------------------|
+| GET  | `/api/Games`         | Hämta alla matcher       |
+| GET  | `/api/Games/{id}`    | Hämta en specifik match  |
+| POST | `/api/Games`         | Skapa ny match           |
+| PUT  | `/api/Games/{id}`    | Uppdatera match          |
+| DELETE | `/api/Games/{id}`  | Ta bort match            |
 
 ---
 
