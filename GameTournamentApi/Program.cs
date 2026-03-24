@@ -22,6 +22,15 @@ builder.Services.AddDbContext<TournamentDbContext>(options =>
 builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<IGameService, GameService>();
 
+// CORS-konfiguration för att tillåta frontend-applikationen att göra förfrågningar till API:et.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});
+
 // Bygger applikationen, vilket skapar en WebApplication-instans som kan hantera HTTP-förfrågningar.
 var app = builder.Build();
 
@@ -34,6 +43,9 @@ if (app.Environment.IsDevelopment())
     // Skapar webbsidan
     app.UseSwaggerUI();
 }
+
+// Aktiverar CORS med den policy som definierats tidigare, så att frontend-applikationen kan kommunicera med API:et utan problem.
+app.UseCors("AllowFrontend");
 
 // Middleware som hanterar HTTP-förfrågningar. De körs i den ordning de är definierade här.
 app.UseHttpsRedirection();

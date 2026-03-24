@@ -18,13 +18,19 @@ public class GameService : IGameService
 
     public async Task<GameDto> CreateAsync(CreateGameDto createDto)
     {
+        // Validerar att TournamentId är angivet i DTO:n, eftersom det är nödvändigt för att skapa ett Game
+        if (!createDto.TournamentId.HasValue)
+        {
+            throw new ArgumentException("TournamentId is required");
+        }
+
         // Skapar en Game-entitet från DTO:n
         var game = new Game
         {
             Title = createDto.Title,
             Time = createDto.Time,
             // Vi kan validera att TournamentId existerar innan vi skapar
-            TournamentId = createDto.TournamentId
+            TournamentId = createDto.TournamentId.Value
         };
 
         // Sparar den nya Game-entiteten i databasen
